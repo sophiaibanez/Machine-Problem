@@ -11,11 +11,11 @@ else
     x0 = 0;
     vx_initial = v0 * cosd(angle);
     vy_initial = v0 * sind(angle);
-    x = x0 + vx_initial .* t + (1/2) * ax .* t .^2;
-    y = y0 + vy_initial .* t + (1/2) * ay .* t .^2;
     tf = roots([(1/2)*ay, vy_initial, y0]);
     tf = max(tf);
     t = [0:0.1:tf];
+    x = x0 + vx_initial .* t + (1/2) * ax .* t .^2;
+    y = y0 + vy_initial .* t + (1/2) * ay .* t .^2;
     
     plot(x, y, 'LineWidth', 2);
     title ('Projectile Trajectory');
@@ -23,6 +23,7 @@ else
     ylabel('Height (in meters)');
     grid on;
     axis tight;
+    axis equal;
     hold on
     
     ax_ideal = 0;
